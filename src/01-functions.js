@@ -146,7 +146,7 @@ function compareTypes(a, b) {
  *  //> -50
  */
 function flipSign(a) {
-  return a > 0 ? -a : Math.abs(a)
+  return -a 
 }
 
 /**
