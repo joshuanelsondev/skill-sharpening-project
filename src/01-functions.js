@@ -9,7 +9,9 @@
  *  alwaysTrue();
  *  //> true
  */
-function alwaysTrue() {}
+function alwaysTrue() {
+  return true;
+}
 
 /**
  * greet()
@@ -24,7 +26,9 @@ function alwaysTrue() {}
  *  greet("Ian");
  *  //> "Hello, Ian."
  */
-function greet(name) {}
+function greet(name) {
+  return `Hello, ${name}.`
+}
 
 /**
  * add()
@@ -39,7 +43,9 @@ function greet(name) {}
  *  add(10, 20);
  *  //> 30
  */
-function add(a, b) {}
+function add(a, b) {
+  return a + b
+}
 
 /**
  * multiply()
@@ -54,7 +60,9 @@ function add(a, b) {}
  *  multiply(2, 5);
  *  //> 10
  */
-function multiply(a, b) {}
+function multiply(a, b) {
+  return a * b
+}
 
 /**
  * average()
@@ -74,7 +82,9 @@ function multiply(a, b) {}
  *  average(10, 6);
  *  //> 8 // 10 + 6 = 16; 16/2 = 8;
  */
-function average(a, b) {}
+function average(a, b) {
+  return (a + b) / 2
+}
 
 /**
  * averageThree()
@@ -93,7 +103,9 @@ function average(a, b) {}
  *  averageThree(10, 11, 19);
  *  //> 10 // 10 + 11 + 19 = 30; 30 / 3 = 10;
  */
-function averageThree(a, b, c) {} 
+function averageThree(a, b, c) {
+  return (a + b + c) / 3
+} 
 
 /**
  * compareTypes()
@@ -112,7 +124,9 @@ function averageThree(a, b, c) {}
  *  compareTypes("left", 10);
  *  //> false
  */
-function compareTypes(a, b) {}
+function compareTypes(a, b) {
+  return typeof a === typeof b
+}
 
 /**
  * flipSign()
@@ -131,7 +145,9 @@ function compareTypes(a, b) {}
  *  flipSign(50);
  *  //> -50
  */
-function flipSign(a) {}
+function flipSign(a) {
+  return -a 
+}
 
 /**
  * joinStringsWithSpaces()
@@ -151,7 +167,9 @@ function flipSign(a) {}
  *  joinStringsWithSpaces("left", "right", "up", "down", "away");
  *  //> "left right up down away"
  */
-function joinStringsWithSpaces(a, b, c, d, e) {}
+function joinStringsWithSpaces(a, b, c, d, e) {
+  return `${a} ${b} ${c} ${d} ${e}`
+}
 
 /**
  * getFirstAndLastCharacter()
@@ -168,7 +186,9 @@ function joinStringsWithSpaces(a, b, c, d, e) {}
  *  getFirstAndLastCharacter("upwards");
  *  //> "us"
  */
-function getFirstAndLastCharacter(a) {}
+function getFirstAndLastCharacter(a) {
+  return `${a[0]}${a[a.length - 1]}`
+}
 
 // Do not change the code below.
 module.exports = {

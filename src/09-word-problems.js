@@ -19,7 +19,22 @@
  *  applyDiscount(1000, 9, true);
  *  //> 700
  */
-function applyDiscount(priceInCents, age, hasMembership) {}
+function applyDiscount(priceInCents, age, hasMembership) {
+  if(!hasMembership){
+    if((age >= 65 || age <= 10)) {
+      priceInCents = priceInCents - (priceInCents * .10)
+    }
+    return priceInCents
+  }else {
+    if((age >= 65 || age <= 10)) {
+      priceInCents = priceInCents - (priceInCents * .3)
+      return priceInCents 
+    }else {
+      priceInCents = priceInCents - (priceInCents * .20)
+      return priceInCents
+    }
+  }
+}
 
 /**
  * getCartTotal()
@@ -40,7 +55,28 @@ function applyDiscount(priceInCents, age, hasMembership) {}
     getCartTotal(cart);
  *  //> "$30.00"
  */
-function getCartTotal(products) {} 
+const moneyConverter = (strNum) => {
+
+  if(strNum.length > 4){
+    // If the strNum length is greater than 4 (10000) we want to add a money symbol, slice from index 0 up until index 3, add a dot, then slice the rest of the strNum
+    return `$${strNum.slice(0, 3)}.${strNum.slice(3)}`
+
+  }else if(strNum.length > 5){
+    // else If the strNum length is greater than 5 (100000) we want to add a money symbol, slice from index 0 up until index 4, add a dot, then slice the rest of the strNum
+    return `$${strNum.slice(0, 4)}.${strNum.slice(4)}`
+
+  }
+  // if none of the conditions are true, the strNum length is 4 (1000) so we want to add a money symbol, slice from index 0 up until index 2, add a dot, then slice the rest of the strNum
+  return `$${strNum.slice(0, 2)}.${strNum.slice(2)}`
+} 
+
+function getCartTotal(products) {
+  let total = products.reduce((total, obj) => {
+    total += (obj.priceInCents * obj.quantity)
+    return total
+  },0)
+  return moneyConverter(String(total))
+} 
 
 /**
  * compareLocations()
@@ -80,7 +116,18 @@ function getCartTotal(products) {}
     compareLocations(address1, address2);
     //> "Same city."
  */
-function compareLocations(address1, address2) {}
+function compareLocations(address1, address2) {
+  const {street, city, state, zip} = address1
+  if((street === address2.street) && (city === address2.city) && (state === address2.state) && (zip === address2.zip)){
+    return "Same building."
+  }else if((city === address2.city) && (state === address2.state) && (zip === address2.zip)) {
+    return "Same city."
+  }else if(state === address2.state){
+    return "Same state."
+  }else {
+    return "Addresses are not near each other."
+  }
+}
 
 /**
  * gradeAssignments()
@@ -127,7 +174,20 @@ function compareLocations(address1, address2) {}
     //>   },
     //> ];
  */
-function gradeAssignments(assignments) {}
+function gradeAssignments(assignments) {
+  for(const score of assignments){
+    let grade;
+    if(score.kind === "PERCENTAGE"){
+      grade = score.score.received / score.score.max * 100
+      score["status"] = grade.toFixed(2) >= 80.00 ? `PASSED: ${grade.toFixed(1)}%` : `FAILED: ${grade.toFixed(1)}%`
+    }else if(score.kind === "ESSAY"){
+      score["status"] = `SCORE: ${score.score.received}/${score.score.max}`
+    }else {
+      score["status"] = score.score.received === score.score.max ? "PASSED" : "FAILED"
+    }
+  }
+  return assignments
+}
 
 /**
  * createLineOrder()
@@ -153,7 +213,14 @@ function gradeAssignments(assignments) {}
     createLineOrder(people);
     //> [ "Ray Anderson", "America Marsh", "Wade Carson", "Patience Patel" ]
  */
-function createLineOrder(people) {} 
+function createLineOrder(members) {
+  let nonMembers = []
+  let memberShip = members.reduce((arr, item) => {
+    item.hasMembership ? arr.push(item.name) : nonMembers.push(item.name)
+    return arr
+  },[])
+  return memberShip.concat(nonMembers)
+} 
 
 module.exports = {
   applyDiscount,
