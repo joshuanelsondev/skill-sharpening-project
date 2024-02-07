@@ -107,3 +107,7 @@ You may complete the functions in any order, although you may find that the earl
 - If you're ever unclear as to what you need to do, check both the comments and the tests. The tests will have clear inputs and outputs to try.
 
 - There should be no new tools or methods you need to use to solve these problems. Reference your reading, old labs, and other resources shared in class. Do not just search the internet for an answer.
+
+
+
+
